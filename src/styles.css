@@ -1,0 +1,141 @@
+/* You can add global styles to this file, and also import other style files */
+.dropdown-center {
+    
+    padding: 10px 700px;
+    margin-top: -748px;
+    font-size: 16px;
+   
+  }
+  h3{
+    margin-left: -270px;
+  }
+  .mb-3
+  {
+    width: 30%;
+    margin-left: 35%;
+    height: 55px;
+  }
+  .mb-4
+  {
+    margin-top: 85px;
+    margin-left: 35%;
+    margin-right: 35%;
+  }
+  #savebtn{
+margin-left: 37%;
+margin-right: 15%;
+  }
+.close-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color:red;
+    font-size: 18px;
+    box-shadow: red;
+   margin-left: 62%;
+  }
+  #sdlc{
+    margin-top: -395px;
+  }
+ 
+  .box
+  {
+    
+        width: 320px;
+        height: 900px;
+        padding: 10px;
+        border: 5px solid gray;
+        margin: 0;
+        margin-left: 10px;
+      
+  }
+  .box2
+  {
+    
+        width: 850px;
+        height: 700px;
+        margin-left: 35%;
+        margin-top: 40px;
+        border: 5px solid gray; 
+  }
+  h6{
+    text-align: center;
+    margin-top: 20px;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  }
+  #adddoc
+  {
+    margin-top: 25px;
+    margin-left: 6%;
+  }
+ #adddig
+ {
+    margin-left: 15px;
+    margin-top: 30px;
+ }
+ #browsingbtn
+ {
+    margin-left: 70%;
+    margin-top: -140px;
+ }
+ #saveDoc{
+    margin-top: 10%;
+    margin-right: -25%;
+ }
+ .showbox{
+  margin-left:250%;
+  width: 700px;
+  height: 250px;
+  margin-top: -10%;
+  border: 5px solid gray; 
+
+ }
+ .card{
+  height: 210px;
+ }
+ img{
+  height: 100px;
+  width: 100px;
+ }
+ #initiationform{
+  margin-top: -5%;
+  margin-left: -10%;
+ }
+ #updateform{
+  margin-top: -23%;
+  margin-left: -5%;
+ }
+
+ #editbtn{
+  margin-right: 250px;
+  margin-left: 22%;
+  width: 10%;
+ }
+ #reqform{
+  margin-top: -5%;
+  margin-left: -10%;
+ }
+ #showcard
+ {
+  margin-top: -100%;
+ }
+ #updatereq
+ {
+  margin-top: 15%;
+  margin-left: -5%;
+ }
+ #editbtnreq{
+  margin-right: 250px;
+  margin-left: 22%;
+  width: 10%;
+  margin-top: 10px;
+ }
+ #designform
+ { 
+  margin-top: -5%;
+  margin-left: -10%;
+
+ }
+ #dSave{
+  margin-top: 10px;
+ }

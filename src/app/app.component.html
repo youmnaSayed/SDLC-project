@@ -1,0 +1,30 @@
+<div>
+<ul class="nav nav-tabs">
+    <li class="nav-item">
+      <a class="nav-link active" aria-current="page" href="#">Documentation System</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" class="btn btn-secondry"  >SDLC</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" class="btn btn-secondry" [routerLink]="['/', 'all_files']">All Files</a>
+    </li>
+   
+  </ul>
+
+  <br>
+<div class="btn">
+<button type="button" class="btn btn-dark" data-bs-toggle="button" aria-pressed="true" (click)="onClick()">
+  Create New Document
+</button>
+</div>
+
+<router-outlet></router-outlet>
+
+</div>
+
+
+
+
+
+ <!-- <app-sdlc></app-sdlc>  -->

@@ -1,0 +1,343 @@
+
+<div class="box"> 
+  <div *ngFor="let document of documents">
+    <div class="card" style="width: 18rem; height: 20rem;">
+        <div class="card-body" style="height: 32px;">
+             <h5 class="card-title">Project Title:{{document?.title}}</h5> 
+            <h6 class="card-subtitle mb-2 text-body-secondary">Project Start Date:{{document?.sd}}</h6>
+           <h6 class="card-subtitle mb-2 text-body-secondary">Project Fiish Date:{{document?.fd}}</h6>
+           <h6 class="card-subtitle mb-2 text-body-secondary">Project Objective:{{document?.projectObj}}</h6>
+           <h6 class="card-subtitle mb-2 text-body-secondary">Project Manager: {{document?.projectManager}}</h6>
+           <h6 class="card-subtitle mb-2 text-body-secondary">Budget Information:{{document?.projectInfo}}</h6>
+           <h6 class="card-subtitle mb-2 text-body-secondary">Project Scope Statement:{{document?.projectScopeStatement}}</h6>
+           <button type="button" class="btn btn-dark"  [(ngModel)]="documentIdToFind" (click)="findDocument()">show</button>
+
+        </div>
+
+<div *ngFor="let document of documents">
+  <div *ngIf="show==true"> 
+   <div class="showbox">
+    <div class="card" style=" height:238px;" >
+      <div class="card-body" style=" height:32px;">
+    <h5 class="card-title">Project Title:{{document?.title}}</h5>
+    <h6 class="card-subtitle mb-2 text-body-secondary">Project Start Date:{{document?.sd}}</h6>
+    <h6 class="card-subtitle mb-2 text-body-secondary">Project Fiish Date:{{document?.fd}}</h6>
+    <h6 class="card-subtitle mb-2 text-body-secondary">Project Objective:{{document?.projectObj}}</h6>
+    <h6 class="card-subtitle mb-2 text-body-secondary">Project Manager: {{document?.projectManager}}</h6>
+    <h6 class="card-subtitle mb-2 text-body-secondary">Budget Information:{{document?.projectInfo}}</h6>
+    <h6 class="card-subtitle mb-2 text-body-secondary">Project Scope Statement:{{document?.projectScopeStatement}}</h6>
+    <button *ngIf="document" type="button" class="btn btn-secondary" (click)="editDocument(document)">Edit</button>
+    <button type="button" class="btn btn-danger"  [(ngModel)]="this.id"  (click)="deleteInitiationDocument(document)">Delete</button>
+    <!-- <div *ngIf="successMessage">{{ successMessage }}</div> -->
+  </div>
+   </div>
+  </div>
+  </div>
+  </div>
+</div>
+  </div>
+
+
+
+<div *ngFor="let analysis of analyses">
+  <div class="card" style="width: 18rem; height: 23rem;">
+      <div class="card-body">
+        <h5 class="card-title">Analysis intro:{{analysis?.intro}}</h5> 
+        UseCase:
+        <div *ngIf="isVisible">
+          <img [src]="imagePath" alt="Uploaded Photo">
+         </div>
+          <h6 class="card-subtitle mb-2 text-body-secondary">Analysis purpose:{{analysis?.purpose}}</h6>
+         <h6 class="card-subtitle mb-2 text-body-secondary">Analysis Audience:{{analysis?.Audience}}</h6>
+         <h6 class="card-subtitle mb-2 text-body-secondary">Analysis description:{{analysis?.description}}</h6>
+         <h6 class="card-subtitle mb-2 text-body-secondary">Analysis systemFeaturesandReq: {{analysis?.systemFeaturesandReq}}</h6>
+         <h6 class="card-subtitle mb-2 text-body-secondary">Analysis systemFeaturesandReq: {{analysis?.systemFeaturesandReq}}</h6>
+         <button type="button" class="btn btn-dark"  [(ngModel)]="documentIdToFind" (click)="findDocument()">show</button>
+      </div>
+ <div *ngFor="let analysis of analyses" id="showcard">
+  <div *ngIf="show == true"> 
+    <div class="showbox" style=" margin-top: -5%;">
+      <div class="card" style=" height:238px;">
+        <div class="card-body">
+          <h5 class="card-title">Analysis Introduction:{{analysis?.intro}}</h5>
+          <h6 class="card-subtitle mb-2 text-body-secondary">Analysis purpose:{{analysis?.purpose}}</h6>
+          <h6 class="card-subtitle mb-2 text-body-secondary">Analysis Audience:{{analysis?.Audience}}</h6>
+          <h6 class="card-subtitle mb-2 text-body-secondary">Analysis description:{{analysis?.description}}</h6>
+          <h6 class="card-subtitle mb-2 text-body-secondary">Analysis systemFeaturesandReq:{{analysis?.systemFeaturesandReq}}</h6>
+          <button *ngIf="analysis" type="button" class="btn btn-info" (click)="editAnalysisDocument(analysis)">Edit</button>
+          <button type="button" class="btn btn-danger" (click)="deleteAnalysisDoc(analysis)">Delete</button>
+        </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> 
+      
+  </div>
+</div>
+
+
+
+<div *ngIf="edit==true && selectedPhase === 'Initiation Phase'" id="updateform">
+  <div *ngFor="let document of documents">
+  <form (submit)="updateInitiationDoc()" #form="ngForm">
+    <div class="mb-3">
+      <!-- <p>{{document?.id}}</p> -->
+      <input type="hidden"   name="id" [(ngModel)]="updateForm.id">
+      <label for="exampleFormControlInput1" class="form-label">Project Title</label>
+      <input type="text" class="form-control" id="exampleFormControlInput1" name="title" [(ngModel)]="updateForm.title" required>
+    </div>
+    <div class="mb-3">
+      <label for="exampleFormControlTextarea1" class="form-label">Project Start Date</label>
+      <input class="form-control" id="exampleFormControlTextarea1" rows="3" name="sd" [(ngModel)]="updateForm.sd" required>
+    </div>
+    <div class="mb-3">
+      <label for="exampleFormControlTextarea1" class="form-label">Project Finish Date</label>
+      <input class="form-control" id="exampleFormControlTextarea1" rows="3" name="fd" [(ngModel)]="updateForm.fd" required>
+    </div>
+    <!-- Add the remaining fields here -->
+    <div class="mb-3">
+      <label for="exampleFormControlTextarea1" class="form-label">Project Objective</label>
+      <input class="form-control" id="exampleFormControlTextarea1" rows="3" name="projectObj" [(ngModel)]="updateForm.projectObj" required>
+    </div>
+    <div class="mb-3">
+      <label for="exampleFormControlTextarea1" class="form-label">Project Manager</label>
+      <input class="form-control" id="exampleFormControlTextarea1" rows="3" name="projectManager" [(ngModel)]="updateForm.projectManager" required>
+    </div>
+    <div class="mb-3">
+      <label for="exampleFormControlTextarea1" class="form-label">Budget Information</label>
+      <input class="form-control" id="exampleFormControlTextarea1" rows="3" name="projectInfo" [(ngModel)]="updateForm.projectInfo" required>
+    </div>
+    <div class="mb-3">
+      <label for="exampleFormControlTextarea1" class="form-label">Project Scope Statement</label>
+      <input class="form-control" id="exampleFormControlTextarea1" rows="3" name="projectScopeStatement" [(ngModel)]="updateForm.projectScopeStatement" required>
+    </div>
+    <br/>
+    <button type="submit" class="btn btn-success" id="savebtn">Save</button>
+  </form>
+</div>
+</div>
+
+
+  
+
+
+    
+    
+<div class="dropdown-center">
+  <button class="btn btn-dark dropdown-toggle" type="button" id="sdlc" data-bs-toggle="dropdown" aria-expanded="false">
+    SDLC Phases
+  </button>
+  <ul class="dropdown-menu">
+    <li><a class="dropdown-item"  (click)="selectPhase('Initiation Phase')">Initiation Phase</a></li>
+    <li><a class="dropdown-item"  (click)="selectPhase('Requirement Phase (analysis Phase)')">Requirement Phase (Analysis Phase)</a></li>
+    <li><a class="dropdown-item" (click)="selectPhase('Design Phase')">Design Phase</a></li>
+  </ul>
+</div>
+
+
+
+
+
+
+
+<!-- Add #initiationForm to the form element to create a reference to the form -->
+<div *ngIf="selectedPhase === 'Initiation Phase'" id="initiationform">
+  <div *ngIf="showForm == true">
+    <button type="button" class="close-button" (click)="closeForm()">close</button>
+
+    <!-- Add #initiationForm to the form element to create a reference to the form -->
+    <form #initiationForm="ngForm" >
+      <div class="mb-3">
+        <label for="exampleFormControlInput1" class="form-label">Project Title</label>
+        <input type="text" class="form-control" id="exampleFormControlInput1" [(ngModel)]="title" name="title" required>
+      </div>
+      <!-- Add the 'required' attribute to the date inputs -->
+      <div class="mb-3">
+        <label for="exampleFormControlTextarea1" class="form-label">Project Start Date</label>
+        <input type="text" class="form-control" id="exampleFormControlTextarea1" rows="3" [(ngModel)]="sd" name="startDate" required>
+      </div>
+      <div class="mb-3">
+        <label for="exampleFormControlTextarea1" class="form-label">Project Finish Date</label>
+        <input type="text" class="form-control" id="exampleFormControlTextarea1" rows="3" [(ngModel)]="fd" name="finishDate" required>
+      </div>
+
+      <!-- Add the 'required' attribute to the remaining inputs -->
+      <div class="mb-3">
+        <label for="exampleFormControlTextarea1" class="form-label">Project Objective</label>
+        <input type="text" class="form-control" id="exampleFormControlTextarea1" rows="3" [(ngModel)]="projectObj" name="projectObjective" required>
+      </div>
+      <div class="mb-3">
+        <label for="exampleFormControlTextarea1" class="form-label">Project Manager</label>
+        <input type="text" class="form-control" id="exampleFormControlTextarea1" rows="3" [(ngModel)]="projectManager" name="projectManager" required>
+      </div>
+      <div class="mb-3">
+        <label for="exampleFormControlTextarea1" class="form-label">Budget Information</label>
+        <input type="text" class="form-control" id="exampleFormControlTextarea1" rows="3" [(ngModel)]="projectInfo" name="budgetInformation" required>
+      </div>
+      <div class="mb-3">
+        <label for="exampleFormControlTextarea1" class="form-label">Project Scope Statement</label>
+        <input type="text" class="form-control" id="exampleFormControlTextarea1" rows="3" [(ngModel)]="projectScopeStatement" name="projectScopeStatement" required>
+      </div>
+      <br/>
+      <button type="button" class="btn btn-success" id="savebtn" (click)="createInitiationDoc()" [disabled]="!initiationForm.valid">Save</button>
+      <button type="button" class="btn btn-dark" (click)="resetForm(initiationForm)">Reset</button>
+    </form>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div *ngIf="selectedPhase === 'Requirement Phase (analysis Phase)'" id="reqform">
+  <div *ngIf="showForm == true">
+    <button type="button" class="close-button" (click)="closeForm()">close</button>
+    <form #requirementForm="ngForm">
+      <div class="mb-3">
+        <label for="exampleFormControlInput1" class="form-label">Introduction</label>
+        <input type="text" class="form-control" id="exampleFormControlInput1" [(ngModel)]="intro" name="introduction" required>
+      </div>
+      <div class="mb-3">
+        <label for="exampleFormControlTextarea1" class="form-label">Purpose of software being developed</label>
+        <input class="form-control" id="exampleFormControlTextarea1" rows="3" [(ngModel)]="purpose" name="purpose" required/>
+      </div>
+      <div class="mb-3">
+        <label for="exampleFormControlTextarea1" class="form-label">Intended Audience</label>
+        <input class="form-control" id="exampleFormControlTextarea1" rows="3" [(ngModel)]="Audience" name="intendedAudience" required/>
+      </div>
+      <div class="mb-3">
+        <label for="exampleFormControlTextarea1" class="form-label">Overall description of the software</label>
+        <input class="form-control" id="exampleFormControlTextarea1" rows="3" [(ngModel)]="description" name="softwareDescription" required/>
+      </div>
+      <div class="mb-3">
+        <label for="exampleFormControlTextarea1" class="form-label">System Features and Requirements</label>
+        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" [(ngModel)]="systemFeaturesandReq" name="systemFeaturesandReq" required></textarea>
+      </div>
+      <div class="mb-4">
+        <label for="formFile">UseCase</label>
+        <input class="form-control" type="file" id="formFile" [(ngModel)]="usecase" name="usecase" (change)="onFileSelected($event)">
+        <div *ngIf="isVisible">
+          <img [src]="imagePath" [alt]="imagePath ? 'Uploaded Photo' : 'No Image Available'">
+        </div>
+      </div>
+      <br/>
+      <button type="button" class="btn btn-success" id="savebtn" (click)="createAnalysisDoc()" [disabled]="!requirementForm.valid">Save</button>
+      <button type="button" class="btn btn-dark" (click)="resetForm(requirementForm)">Reset</button> 
+       </form>
+  </div>
+</div>
+
+
+
+
+
+
+
+<div *ngIf="edit==true && selectedPhase === 'Requirement Phase (analysis Phase)'" id="updatereq">
+  <div *ngFor="let analysis of analyses">
+  <form (submit)="updateAnalysisDoc()" #form="ngForm">
+    <div class="mb-3">
+      <!-- <p>{{document?.id}}</p> -->
+      <input type="hidden"name="id" [(ngModel)]="updateAnalysisForm.id">
+      <label for="exampleFormControlInput1" class="form-label">Analysis intro</label>
+      <input type="text" class="form-control" id="exampleFormControlInput1" name="intro" [(ngModel)]="updateAnalysisForm.intro" required>
+    </div>
+    <div class="mb-3">
+      <label for="exampleFormControlTextarea1" class="form-label">Analysis purpose</label>
+      <input class="form-control" id="exampleFormControlTextarea1" rows="3" name="purpose" [(ngModel)]="updateAnalysisForm.purpose" required>
+    </div>
+    <div class="mb-3">
+      <label for="exampleFormControlTextarea1" class="form-label">Analysis Audience</label>
+      <input class="form-control" id="exampleFormControlTextarea1" rows="3" name="Audience" [(ngModel)]="updateAnalysisForm.Audience" required>
+    </div>
+    <!-- Add the remaining fields here -->
+    <div class="mb-3">
+      <label for="exampleFormControlTextarea1" class="form-label">Analysis description</label>
+      <input class="form-control" id="exampleFormControlTextarea1" rows="3" name="description" [(ngModel)]="updateAnalysisForm.description" required>
+    </div>
+    <div class="mb-3">
+      <label for="exampleFormControlTextarea1" class="form-label">Analysis systemFeaturesandReq</label>
+      <input class="form-control" id="exampleFormControlTextarea1" rows="3" name="systemFeaturesandReq" [(ngModel)]="updateAnalysisForm.systemFeaturesandReq" required>
+    </div>
+    <button type="submit" class="btn btn-success" id="savebtn">Save</button>
+  </form>
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 
+    <div *ngIf="edit && selectedPhase === 'Requirement Phase (analysis Phase)'">
+      <form (ngSubmit)="updateAnalysisDoc()" #form="ngForm">
+        <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label">Introduction</label>
+          <input type="text" class="form-control" id="exampleFormControlInput1" name="intro" [(ngModel)]="updateForm.intro" required>
+        </div>
+        <div class="mb-3">
+          <label for="exampleFormControlTextarea1" class="form-label">Purpose of software being developed</label>
+          <input class="form-control" id="exampleFormControlTextarea1" rows="3" name="purpose" [(ngModel)]="updateForm.purpose" required/>
+        </div>
+        <div class="mb-3">
+          <label for="exampleFormControlTextarea1" class="form-label">Intended Audience</label>
+          <input class="form-control" id="exampleFormControlTextarea1" rows="3" name="Audience" [(ngModel)]="updateForm.Audience" required/>
+        </div>
+        <div class="mb-3">
+          <label for="exampleFormControlTextarea1" class="form-label">Overall description of the software</label>
+          <input class="form-control" id="exampleFormControlTextarea1" rows="3" name="description" [(ngModel)]="updateForm.description" required/>
+        </div>
+        <div class="mb-3">
+          <label for="exampleFormControlTextarea1" class="form-label">System Features and Requirements</label>
+          <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="systemFeaturesandReq" [(ngModel)]="updateForm.systemFeaturesandReq" required></textarea>
+        </div>
+        <div class="mb-4">
+          <label for="formFile">UseCase</label>
+          <input class="form-control" type="file" id="formFile" name="useCase" [(ngModel)]="updateForm.useCase" required>
+        </div>
+        <button type="submit" class="btn btn-dark" id="savebtn">Save</button>
+      </form>
+    </div> -->
+    
+    
+
+
+  
+        
+      
+<div *ngIf="selectedPhase === 'Design Phase'" id="designform">
+<div class="box2">
+    <p id="p3">Software Design Document (SDD)</p>
+    <form [formGroup]="signupForm!"  (ngSubmit)="onSubmit()" id="form3">
+    <div formArrayName="sdd">
+    <button type="button"  class="btn btn-dark" (click)="addSdd()">Add New Document</button>
+    <div class="addFile" *ngFor="let designPhase of getControls(); let i = index" [formGroupName]="i">
+    <label for="name" >File Name</label>
+    <input id="in3" type="text"  name="fileName" formControlName="name"  >
+    <label for="fileImage" id="imLabel" >Select File</label>
+    <input id="dImage" type="file"   name="fileImage" formControlName="fileImage" required (change)="onFileSelectedDes($event, i)">
+    </div>
+    </div>
+     
+                    <input type="submit" value="Save"  class="btn btn-dark" id="dSave" [disabled]="!signupForm?.valid" >
+    </form>
+</div>
+</div>

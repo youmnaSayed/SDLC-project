@@ -1,0 +1,15 @@
+<!-- 
+<div *ngFor="let photoLink of photoLinks">
+  <img [src]="photoLink" alt="Analysis Photo">
+</div> -->
+
+
+
+<!-- analysis-photos.component.html -->
+<div>
+  <h2>Analysis Phase Photos</h2>
+  <div *ngFor="let photo of analysisPhotos">
+    <img [src]="photo.imageUrl" alt="Analysis Photo">
+    <!-- Add other photo details as needed -->
+  </div>
+</div>
